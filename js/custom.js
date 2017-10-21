@@ -134,7 +134,7 @@ $(function() {
 	/*------------------------------------------------------*/
 	
 	// Swipebox gallery
-	$(document).swipebox({ selector: '.swipebox' });
+	//$(document).swipebox({ selector: '.swipebox' });
 	
 	// Right sidebar tabs
 	$('ul.tabs').tabs();
