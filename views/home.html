@@ -1,0 +1,191 @@
+		<!-- CONTENT CONTAINER -->
+		<div class="content-container" ng-hide=logado>	
+
+			<div class="content-article">
+				<h1 class="entry-title page">About SELLi</h1>
+					<div class="thumb-featured no-margin">
+						<img src="images/feat1.jpg">
+					</div><!-- .entry-meta -->
+					<div class="entry-content selli-canvas">
+						<input type="text" ng-model="yourName" placeholder="Enter a name here">
+				      <hr>
+				      <h1>Hello {{yourName}}!</h1>
+					</div><!-- .entry-content -->
+
+				<div class="selli-canvas entry-footer no-margin">
+					<div class="social-share">
+						<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+						<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+						<a href="#" class="gplus"><i class="fa fa-google-plus"></i></a>
+					</div><!-- .social-share -->
+				</div><!-- .entry-footer -->
+			</div><!-- .content-article -->
+
+		</div>
+
+
+
+		<div class="content-container" ng-show=logado>
+
+			<h1 class="page-title">Tracking Order</h1>
+			
+			<!-- Tracking order navigation -->
+			<div class="tracking-order-nav">
+				<span class="nav-left">
+					<span class="block">Order</span>
+					<span class="block semibold"># 469278</span>
+				</span>
+				<span class="nav-right">
+					<span class="block">Ordered at</span>
+					<span class="block semibold">03/02/2016</span>
+				</span>
+			</div>
+			<!-- End Tracking order navigation -->
+
+			<!-- Tracking order list (collapsible) -->
+			<ul class="collapsible tracking-order" data-collapsible="accordion">
+				
+				<li class=""><!-- Item #1 -->
+					<div class="collapsible-header">
+						<span class="indicator fa fa-caret-right"></span>
+						<div class="tracking-status">
+							<span class="fa fa-truck"></span>
+							Sent
+						</div>
+						<div class="std-shipping">
+							<span class="block text-small">Shipping 1 from 2</span>
+							<span class="block">Standard Shipping</span>
+							<span class="block semibold">07 - 09/2/2017</span>
+						</div>
+					</div>
+					<div class="collapsible-body" style="display: none;">
+
+						<div class="tracking-process">
+							<div class="step active">
+								<div class="icon">
+									<i class="fa fa-ship"></i>
+								</div>
+								<span class="name">Process</span>
+							</div>
+							<div class="step active">
+								<div class="icon">
+									<i class="fa fa-truck"></i>
+								</div>
+								<span class="name">Sent</span>
+							</div>
+							<div class="step">
+								<div class="icon">
+									<i class="fa fa-check"></i>
+								</div>
+								<span class="name">Done</span>
+							</div>
+							<div class="lineconnect"></div>
+						</div>
+
+						<ol class="tracking-table">
+							<li class="heading">
+								Description
+							</li>
+							<li>
+								<span class="time">03/02/2017 00:43:19</span>
+								Your order success. Right now, we're not ready to give more information, lets check later.
+							</li>
+							<li>
+								<span class="time">03/02/2017 08:53:00</span>
+								Your order has been packaged.
+							</li>
+						</ol>
+
+						<span class="block semibold">Package contain:</span>
+						<ol class="package-contain">
+							<li>
+								<div class="thumb">
+									<img src="images/2.jpg" alt="">
+								</div>
+								<div class="ctn">
+									<h3>Maotomo Casing</h3>
+									<span>Qty</span> 1
+								</div>
+							</li>
+						</ol>
+					</div>
+
+				</li><!-- End Item #1 -->
+
+				<li class=""><!-- Item #2 -->
+					<div class="collapsible-header">
+						<span class="indicator fa fa-caret-right"></span>
+						<div class="tracking-status">
+							<span class="fa fa-check"></span>
+							Done
+						</div>
+						<div class="std-shipping">
+							<span class="block text-small">Shipping 2 from 2</span>
+							<span class="block">Standard Shipping</span>
+							<span class="block semibold">07 - 09/2/2017</span>
+						</div>
+					</div>
+					<div class="collapsible-body" style="display: none;">
+
+						<div class="tracking-process">
+							<div class="step active">
+								<div class="icon">
+									<i class="fa fa-ship"></i>
+								</div>
+								<span class="name">Process</span>
+							</div>
+							<div class="step active">
+								<div class="icon">
+									<i class="fa fa-truck"></i>
+								</div>
+								<span class="name">Sent</span>
+							</div>
+							<div class="step active">
+								<div class="icon">
+									<i class="fa fa-check"></i>
+								</div>
+								<span class="name">Done</span>
+							</div>
+							<div class="lineconnect"></div>
+						</div>
+
+						<ol class="tracking-table">
+							<li class="heading">
+								Description
+							</li>
+							<li>
+								<span class="time">03/02/2017 00:43:19</span>
+								Your order success. Right now, we're not ready to give more information, lets check later.
+							</li>
+							<li>
+								<span class="time">03/02/2017 08:53:00</span>
+								Your order has been packaged.
+							</li>
+						</ol>
+
+						<span class="block semibold">Package contain:</span>
+						<ol class="package-contain">
+							<li>
+								<div class="thumb">
+									<img src="images/2.jpg" alt="">
+								</div>
+								<div class="ctn">
+									<h3>Maotomo Casing</h3>
+									<span>Qty</span> 1
+								</div>
+							</li>
+						</ol>
+					</div>
+
+				</li><!-- End Item #2 -->
+
+			</ul>
+			<!-- End Tracking order list -->
+
+		</div>
+		<!-- END CONTENT CONTAINER -->
+
+		<script type="text/javascript">
+			
+		</script>
+		
