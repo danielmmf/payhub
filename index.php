@@ -322,14 +322,15 @@
 </div><!-- #main -->
 
 <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/firebase.js"></script>
+<script type="text/javascript" src="js/angularfire.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/jquery.slicknav.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
-<script type="text/javascript" src="js/angular.min.js"></script>
-<script type="text/javascript" src="js/firebase.js"></script>
-<script type="text/javascript" src="js/angularfire.min.js"></script>
 <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script>
 
 
 <script type="text/javascript" src="js/custom.js"></script>
@@ -339,7 +340,7 @@
 
 	var app = angular
 	  .module('myapp', [
-	    'ui.router' , 'firebase'
+	    'ui.router' , 'firebase' , 'ui.materialize'
 	  ]);
 
 	app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -393,7 +394,7 @@
 
 
 	$(function() {
-			alert("carregou");
+			//alert("carregou");
 	
 	'use strict';
 
