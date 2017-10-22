@@ -100,7 +100,7 @@
 			<div id="yourcart">
 				
 				<ol class="cart-item">
-					<li>
+					<li ng-repeat="propostas in minhas_propostas">
 						<div class="thumb">
 							<img src="images/shop8_80x80.png" alt="">
 						</div>
@@ -110,53 +110,16 @@
 							</a>
 						</div>
 						<div class="cart-detail">
-							<h3 class="product-name"><a href="product.html">Tablet Mini 2</a></h3>
+							<h3 class="product-name"><a href="product.html">{{propostas.contrato}}</a></h3>
 							<div class="price">
-								<span>Price</span> $ 472.5
+								<span>valor</span> $ {{propostas.valor}}
 							</div>
 							<div class="qty">
-								<span>Qty</span> <input type="number" value="1">
+								<span>Parcela : {{propostas.parcela}}</span> 
 							</div>
 						</div>
 					</li>
-					<li>
-						<div class="thumb">
-							<img src="images/shop3_65x65.png" alt="">
-						</div>
-						<div class="cart-delete">
-							<a href="#">
-								<i class="fa fa-times"></i>
-							</a>
-						</div>
-						<div class="cart-detail">
-							<h3 class="product-name"><a href="product.html">Modern Watch</a></h3>
-							<div class="price">
-								<span>Price</span> $ 260.9
-							</div>
-							<div class="qty">
-								<span>Qty</span> <input type="number" value="1">
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="thumb">
-							<img src="images/shop2_65x65.png" alt="">
-						</div>
-						<div class="cart-delete">
-							<a href="#">
-								<i class="fa fa-times"></i>
-							</a>
-						</div>
-						<div class="cart-detail">
-							<h3 class="product-name"><a href="product.html">Camping Tent</a></h3>
-							<div class="price">
-								<span>Price</span> $ 102.8
-							</div>
-							<div class="qty">
-								<span>Qty</span> <input type="number" value="1">
-							</div>
-						</div>
-					</li>
+					
 				</ol>
 
 				<div class="cart-action">
@@ -165,14 +128,14 @@
 						<span class="price">$ 835.2</span>
 					</div>
 					<div class="subtotal">
-						<span class="title">Tax</span>
+						<span class="title">Taxas</span>
 						<span class="price">$ 4.0</span>
 					</div>
 					<div class="total">
 						<span class="title">Total</span>
 						<span class="price">$ 839.2</span>
 					</div>
-					<a href="#" class="btn green btn-block">Proceed to checkout</a>
+					<a href="#" class="btn green btn-block">Validar todas</a>
 				</div>
 
 			</div>
@@ -250,40 +213,35 @@
 		 <ui-view></ui-view>
 
 		<!-- FOOTER -->
-		<div class="footer">
+			<div class="footer">
 			
 			<!-- Footer main Section -->
 			<div class="footer-main">
 				<p>
-					<span class="block text-small">Secure shopping at SELLi via</span>
-					<i class="fa fa-cc-amex"></i>
+					<span class="block text-small">Pagamento Seguro PayHub via</span>
 					<i class="fa fa-cc-mastercard"></i>
 					<i class="fa fa-credit-card"></i>
 					<i class="fa fa-cc-paypal"></i>
 					<i class="fa fa-cc-visa"></i>
 					<i class="fa fa-google-wallet"></i>
-					<i class="fa fa-cc-discover"></i>
-					<i class="fa fa-cc-jcb"></i>
 				</p>
 				<p>
-					<span class="block text-small">Having problem? Contact us</span>
-					+44 567 89 | ours@example.com | <a href="#">Live Chat</a>
+					<span class="block text-small">Tendo problemas? Fale conosco</span>
+					payhub@gmail.com | <a href="#">Live Chat</a>
 				</p>
 
 				<div class="social-footer">
 					<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-					<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-					<a href="#" class="gplus"><i class="fa fa-google-plus"></i></a>
 				</div>
 			</div>
 			<!-- End Footer main Section -->
 
 			<!-- Copyright Section -->
 			<div class="copyright">
-				<span class="block">&copy; 2017 SELLi Inc - Ecommerce Mobile Template</span>
+				<span class="block">&copy; 2017 Payhub - PAYHUB Payment</span>
 				<div class="navigation">
-					<a href="#">Term & Condition</a>
-					<a href="#">Privacy Policy</a>
+					<a href="#">Termos & Condições</a>
+					<a href="#">Politica de privacidade</a>
 				</div>
 			</div>
 			<!-- End Copyright Section -->
@@ -386,6 +344,7 @@
 	      $scope.nome_logado = $scope.usuario_logado.displayName;
 	    }
 
+	  $scope.minhas_propostas = $firebaseArray(firebase.database().ref().child("profile/"+$scope.usuario_logado.providerData[0].uid+"/propostas"));   
 
 
 	$(function() {

@@ -24,7 +24,6 @@
 		</div>
 
 
-
 		<div class="content-container" ng-show=logado>
 
 			<h1 class="page-title">
@@ -46,7 +45,7 @@
 			<!-- Tracking order list (collapsible) -->
 			<ul class="collapsible tracking-order" data-collapsible="accordion">
 				
-				<li class=""><!-- Item #1 -->
+				<li class="" ng-repeat="proposta in minhas_propostas"><!-- Item #1 -->
 					<div class="collapsible-header">
 						<span class="indicator fa fa-caret-right"></span>
 						<div class="tracking-status">
@@ -54,9 +53,9 @@
 							Enviado
 						</div>
 						<div class="std-shipping">
-							<span class="block text-small">Mappin</span>
+							<span class="block text-small">{{proposta.nome_empresa}} #{{proposta.contrato}}</span>
 							<span class="block">Compra na loja</span>
-							<span class="block semibold">07 - 09/2/2017</span>
+							<span class="block semibold">{{proposta.criado}} </span>
 						</div>
 					</div>
 					<div class="collapsible-body">
@@ -85,27 +84,25 @@
 
 						<ol class="tracking-table">
 							<li class="heading">
-								Informaçẽes
+								Informações
 							</li>
 							<li>
 								<span class="time">03/02/2017 00:43:19</span>
-								Empresa aceitou a sua negociação
+								A empresa falou que sua dibvida com ela é {{proposta.valor}} 
 							</li>
 							<li>
 								<span class="time">03/02/2017 08:53:00</span>
-								Voce fechou o acordo
+								O valor de parcela minima aceitavel é {{proposta.parcela}}
 							</li>
 						</ol>
 
 						<span class="block semibold">Dados do acordo :</span>
 						<ol class="package-contain">
 							<li>
-								<div class="thumb">
-									<img src="images/2.jpg" alt="">
-								</div>
+						
 								<div class="ctn">
-									<h3>Valor total</h3>
-									<span>Parcelas</span> 12
+									<h3>Valor total : {{proposta.valor}}</h3>
+									<span>Parcelas</span> {{proposta.parcela}}
 								</div>
 							</li>
 						</ol>
@@ -113,80 +110,9 @@
 
 				</li><!-- End Item #1 -->
 
-				<li class=""><!-- Item #2 -->
-					<div class="collapsible-header">
-						<span class="indicator fa fa-caret-right"></span>
-						<div class="tracking-status">
-							<span class="fa fa-check"></span>
-							Aceito
-						</div>
-						<div class="std-shipping">
-							<span class="block text-small">Mesbla</span>
-							<span class="block">Compra Online</span>
-							<span class="block semibold">07 - 09/2/2017</span>
-						</div>
-					</div>
-					<div class="collapsible-body" style="display: none;">
-
-						<div class="tracking-process">
-							<div class="step active">
-								<div class="icon">
-									<i class="fa fa-ship"></i>
-								</div>
-								<span class="name">Enviado</span>
-							</div>
-							<div class="step active">
-								<div class="icon">
-									<i class="fa fa-truck"></i>
-								</div>
-								<span class="name">aceito</span>
-							</div>
-							<div class="step active">
-								<div class="icon">
-									<i class="fa fa-check"></i>
-								</div>
-								<span class="name">acordado</span>
-							</div>
-							<div class="lineconnect"></div>
-						</div>
-
-						<ol class="tracking-table">
-							<li class="heading">
-								Informaçẽes
-							</li>
-							<li>
-								<span class="time">03/02/2017 00:43:19</span>
-								Empresa aceitou a sua negociação
-							</li>
-							<li>
-								<span class="time">03/02/2017 08:53:00</span>
-								Voce fechou o acordo
-							</li>
-						</ol>
-
-						<span class="block semibold">Dados do acordo :</span>
-						<ol class="package-contain">
-							<li>
-								<div class="thumb">
-									<img src="images/2.jpg" alt="">
-								</div>
-								<div class="ctn">
-									<h3>Valor total</h3>
-									<span>Parcelas</span> 12
-								</div>
-							</li>
-						</ol>
-					</div>
-
-				</li><!-- End Item #2 -->
 
 			</ul>
 			<!-- End Tracking order list -->
 
 		</div>
-		<!-- END CONTENT CONTAINER -->
-
-		<script type="text/javascript">
-			
-		</script>
 		
