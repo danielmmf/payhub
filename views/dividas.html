@@ -1,0 +1,123 @@
+	<div class="content-container">
+
+			<h1 class="page-title">Dividas</h1>
+			
+			<!-- Checkout process step indicator-->
+			<div class="checkout-process">
+				<div class="process-step">
+					<div class="step-num active">
+						1
+					</div>
+					<div class="step-name">
+						Adicionado
+					</div>
+				</div>
+				<div class="process-step">
+					<div class="step-num">
+						2
+					</div>
+					<div class="step-name">
+						Encontrado
+					</div>
+				</div>
+				<div class="lineconnect"></div>
+			</div>
+			<!-- End Checkout process-->
+
+			<!-- Summary of total payment payment (Collapsible) -->
+			<ul class="collapsible payment-summary" data-collapsible="accordion">
+				<li>
+					<div class="collapsible-header">
+						<span class="fa fa-caret-right"></span>
+						<div class="summary-item">
+							<span class="desc bold">Divida Total</span>
+							<span class="value bold">$ 182.90</span>
+						</div>
+					</div>
+					<div class="collapsible-body">
+						<div class="summary-item">
+							<span class="desc">Contrato 1</span>
+							<span class="value">$ 172.90</span>
+						</div>
+						<div class="summary-item">
+							<span class="desc">Contrato 2</span>
+							<span class="value">$ 182.90</span>
+						</div>
+						<div class="summary-item">
+							<span class="desc">Contrato 3</span>
+							<span class="value">Expirado</span>
+						</div>
+						<div class="summary-item">
+							<span class="desc">Contrato 4</span>
+							<span class="value">Inconclusivo</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!-- END Summary of total payment payment -->
+
+			<!-- Shipping Address Section -->
+			<div class="page-block checkout-shipping-block">
+				
+				<h2 class="block-title">
+					<span>Dados da empresa</span>
+				</h2>
+
+				<div class="selli-canvas">
+
+					<p>
+						<span class="semibold">Mesbla</span>
+						<a href="#change-address" class="text-small modal-trigger">alterar (modal)</a>
+					</p>
+
+					<p>
+					Voce é cliente dessa empresa desde 2001<br>
+					Seu score é 200</p>
+					<span class="semibold block">Nome da empresa</span>
+					<textarea cols="40" rows="2" name="note"></textarea>
+
+					<!-- Modal Structure -->
+					<div id="change-address" class="modal modal-fixed-footer">
+						<div class="modal-content">
+							<h4>Change Address</h4>
+							<p>A bunch of text</p>
+						</div>
+						<div class="modal-footer">
+							<a href="#!" class="modal-action modal-close btn-flat ">Save</a>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- END Shipping Address Section -->
+
+			<!-- Shipping Method Section -->
+			<div class="page-block checkout-shipping-block margin-bottom">
+				
+				<h2 class="block-title">
+					<span>Aceita contraproposta</span>
+				</h2>
+
+				<ol class="payment-method">
+					<li>
+						<input name="group1" type="radio" id="test1" />
+						<label for="test1">Não aceito</label>
+					</li>
+					<li>
+						<input name="group1" type="radio" id="test3"  />
+						<label for="test3">Aceito</label>
+						<span>Você será notificado para aceitar</span>
+					</li>
+					
+				</ol>
+
+			</div>
+			<!-- END Shipping Method Section -->
+
+			<div class="checkout-shipping-block">
+				<button type="button" class="btn green block">Salvar</button>
+			</div>
+
+
+		</div>

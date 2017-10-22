@@ -49,28 +49,8 @@
 		<div id="main-menu">
 			<ul>
 				<li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
-				<li class="has-sub"><a href="#"><i class="fa fa-th-list"></i> Negociação</a>
-					<ul>
-						<li>
-							<a href="category.html">Ativas</a>
-						</li>
-						
-						<li>
-							<a href="#">Em andamento</a>
-						</li>
-							
-						<li class="has-sub"><a href="#">Concluidas</a>
-						</li>
-			
-						
-					</ul>
-				</li>
-				<li class="has-sub"><a href="#"><i class="fa fa-briefcase"></i> Dividas</a>
-					<ul>
-						<li><a href="product-list.html">Pendentes</a></li>
-						
-					</ul>
-				</li>
+				<li><a href="/acordos"><i class="fa fa-th-list"></i> Negociação</a></li>
+				<li><a href="/dividas"><i class="fa fa-briefcase"></i> Dividas</a></li>
 				
 				<li class="has-sub"><a href="#"><i class="fa fa-file"></i> Pages</a>
 					<ul>
@@ -81,7 +61,7 @@
 						<li><a href="shortcodes.html">Shortcodes</a></li>
 					</ul>
 				</li>
-				<li><a href="contact.html"><i class="fa fa-envelope"></i> Contato</a></li>
+				<li><a href="/contato"><i class="fa fa-envelope"></i> Contato</a></li>
 			</ul>
 		</div>
 		<!-- End Site/App Menu -->
@@ -355,8 +335,14 @@
 	    })
 	    .state('acordos', {
 	      url: '/acordos',
-	      templateUrl: 'acordos.html',
+	      templateUrl: 'views/acordos.html',
 	      controller: 'AcordosController'
+	    })
+
+	    .state('dividas', {
+	      url: '/dividas',
+	      templateUrl: 'views/dividas.html',
+	      controller: 'DividasController'
 	    })
 	    .state('contact', {
 	      url: '/contact',
@@ -370,12 +356,12 @@
 
 
 	var config = {
-      apiKey: "AIzaSyBT43GcLxCj7gFv_ffEsH8tRCX3c8LoquY",
-    authDomain: "falamebolsa.firebaseapp.com",
-    databaseURL: "https://falamebolsa.firebaseio.com",
-    projectId: "falamebolsa",
-    storageBucket: "falamebolsa.appspot.com",
-    messagingSenderId: "332037027307"
+        apiKey: "AIzaSyBT43GcLxCj7gFv_ffEsH8tRCX3c8LoquY",
+	    authDomain: "falamebolsa.firebaseapp.com",
+	    databaseURL: "https://falamebolsa.firebaseio.com",
+	    projectId: "falamebolsa",
+	    storageBucket: "falamebolsa.appspot.com",
+	    messagingSenderId: "332037027307"
     };
     firebase.initializeApp(config);
 
@@ -613,6 +599,11 @@
 
 
 	app.controller('HomeController', function($scope) {
+	 // alert('Routing pages with ngRoute is damn awesome!');
+	});
+
+	app.controller('DividasController', function($scope) {
+		//alert('Dividas');
 	 // alert('Routing pages with ngRoute is damn awesome!');
 	});
 
