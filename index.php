@@ -25,18 +25,22 @@
 		<!-- Form Search -->
 		<div class="top-left-nav">
 			<div class="pic-thumb">
-				<img src="images/profile-image-1.png" alt="">
+				<img ng-src="{{foto_logado}}" alt="{{nome_logado}}">
 			</div>
 
 			<a href="#" class="dropdown-button" data-activates="dropdown2">
-				Juano Tinhoso
+				{{nome_logado}}
 				<span class="icon"><i class="fa fa-caret-down"></i></span>
 			</a>				
 			<ul id="dropdown2" class="dropdown-content">
 				<li><a href="panel-account.html"><i class="material-icons">mail_outline</i> Inbox</a></li>
 			
 				<li class="divider"></li>
-				<li><a href="tracking-order.html"><i class="material-icons">exit_to_app</i> Signout</a></li>
+				<li><a href="#" ng-click="logoff()" ng-show='logado'><i class="material-icons">exit_to_app</i> Signout</a></li>
+		
+				<li ng-hide=logado>
+					<a href="#" ng-click="login()"><i class="fa fa-sign-in"></i>Login</a>
+				</li>
 			</ul>
 		</div>
 		<!-- End Form Search -->
@@ -362,6 +366,16 @@
 	    $locationProvider.html5Mode(true);
 	});
 
+
+	var config = {
+      apiKey: "AIzaSyBT43GcLxCj7gFv_ffEsH8tRCX3c8LoquY",
+    authDomain: "falamebolsa.firebaseapp.com",
+    databaseURL: "https://falamebolsa.firebaseio.com",
+    projectId: "falamebolsa",
+    storageBucket: "falamebolsa.appspot.com",
+    messagingSenderId: "332037027307"
+    };
+    firebase.initializeApp(config);
 
 	app.controller('MainController', function($scope , $firebaseAuth ,$firebaseArray ,$firebaseObject, $state) {
 	    $scope.logado = false;
