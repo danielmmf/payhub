@@ -29,13 +29,12 @@
 			</div>
 
 			<a href="#" class="dropdown-button" data-activates="dropdown2">
-				Natalie Amyllia
+				Juano Tinhoso
 				<span class="icon"><i class="fa fa-caret-down"></i></span>
 			</a>				
 			<ul id="dropdown2" class="dropdown-content">
 				<li><a href="panel-account.html"><i class="material-icons">mail_outline</i> Inbox</a></li>
-				<li><a href="form-account.html"><i class="material-icons">star_border</i> Starred</a></li>
-				<li><a href="order-history.html"><i class="material-icons">history</i> History</a></li>
+			
 				<li class="divider"></li>
 				<li><a href="tracking-order.html"><i class="material-icons">exit_to_app</i> Signout</a></li>
 			</ul>
@@ -43,7 +42,44 @@
 		<!-- End Form Search -->
 		
 		<!-- App/Site Menu -->
-		<ng-include src="'views/menu.html'"></ng-include>
+		<div id="main-menu">
+			<ul>
+				<li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+				<li class="has-sub"><a href="#"><i class="fa fa-th-list"></i> Negociação</a>
+					<ul>
+						<li>
+							<a href="category.html">Ativas</a>
+						</li>
+						
+						<li>
+							<a href="#">Em andamento</a>
+						</li>
+							
+						<li class="has-sub"><a href="#">Concluidas</a>
+						</li>
+			
+						
+					</ul>
+				</li>
+				<li class="has-sub"><a href="#"><i class="fa fa-briefcase"></i> Dividas</a>
+					<ul>
+						<li><a href="product-list.html">Pendentes</a></li>
+						
+					</ul>
+				</li>
+				
+				<li class="has-sub"><a href="#"><i class="fa fa-file"></i> Pages</a>
+					<ul>
+						<li><a href="standard-page.html">Standard Page</a></li>
+						<li><a href="faq.html">FAQ</a></li>
+						<li><a href="404.html">404</a></li>
+						<li><a href="styling-guide.html">Styling Guide</a></li>
+						<li><a href="shortcodes.html">Shortcodes</a></li>
+					</ul>
+				</li>
+				<li><a href="contact.html"><i class="fa fa-envelope"></i> Contato</a></li>
+			</ul>
+		</div>
 		<!-- End Site/App Menu -->
 
 	</div>
@@ -66,8 +102,8 @@
 			
 			<!-- Tabs Menu -->
 			<ul class="tabs">
-				<li class="tab"><a class="active" href="#yourcart">Your Cart</a></li>
-				<li class="tab"><a href="#latestblog">Latest blog</a></li>
+				<li class="tab"><a class="active" href="#yourcart">Suas negociações</a></li>
+				<li class="tab"><a href="#latestblog">Ultimas dicas</a></li>
 			</ul>
 			<!-- End Tabs Menu -->
 
