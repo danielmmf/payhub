@@ -334,7 +334,7 @@
 
 	var app = angular
 	  .module('myapp', [
-	    'ui.router'
+	    'ui.router' , 'firebase'
 	  ]);
 
 	app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
