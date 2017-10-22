@@ -17,7 +17,7 @@
 
 <body>
 
-<div id="main">
+<div id="main" ng-controller="MainController">
 
 	<!-- LEFT SIDEBAR -->
 	<div id="slide-out-left" class="side-nav">
@@ -322,6 +322,8 @@
 <script type="text/javascript" src="js/slick.min.js"></script>
 <script type="text/javascript" src="js/jquery.slicknav.js"></script>
 <script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/firebase.js"></script>
+<script type="text/javascript" src="js/angularfire.min.js"></script>
 <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
 
 
@@ -342,7 +344,8 @@
 	  $stateProvider
 	    .state('home', {
 	      url: '/',
-	      templateUrl: 'views/blank.html'
+	      templateUrl: 'views/blank.html',
+	      controller: 'HomeController'
 	    })
 	    .state('about', {
 	      url: '/about',
@@ -359,6 +362,89 @@
 	    $locationProvider.html5Mode(true);
 	});
 
+
+	app.controller('MainController', function($scope , $firebaseAuth ,$firebaseArray ,$firebaseObject, $state) {
+	    $scope.logado = false;
+	    $scope.logado = localStorage.getItem("logado");
+	    if($scope.logado){
+	      $scope.usuario = localStorage.getItem("usuario");
+	      $scope.access_token = localStorage.getItem("access_token");
+	      $scope.usuario_logado = JSON.parse($scope.usuario);
+	      $scope.usuario_uid = $scope.usuario_logado.providerData[0].uid;
+	      $scope.foto_logado = localStorage.getItem("foto");
+	      $scope.nome_logado = $scope.usuario_logado.displayName;
+	    }
+
+
+    $scope.logoff = function(){
+      localStorage.setItem("logado",false);
+      localStorage.setItem("usuario" ,{});
+      localStorage.setItem("foto", "");
+      localStorage.clear();
+      $scope.logado = false;
+      $scope.foto_logado = '';
+      $scope.nome_logado = "visitante";
+      var auth = $firebaseAuth();
+      auth.$signOut();
+      $state.go("/");
+    }
+
+    $scope.login = function(){
+      var auth = $firebaseAuth();
+      var provider = new firebase.auth.FacebookAuthProvider();
+      provider.addScope("public_profile");
+      //provider.addScope("age_range");
+      provider.addScope("user_location");
+      provider.addScope('user_photos');
+      provider.addScope('user_friends');
+      provider.addScope('user_posts');
+      provider.addScope('publish_actions');
+      auth.$signInWithPopup(provider).then(function(firebaseUser) {
+        $scope.usuario_logado = firebaseUser.user;
+        console.log("Logado como :", firebaseUser.user.displayName);
+        console.log(firebaseUser);
+        localStorage.setItem("usuario" , JSON.stringify(firebaseUser.user));
+        localStorage.setItem("foto" , firebaseUser.user.photoURL);
+        localStorage.setItem("access_token" , firebaseUser.credential.accessToken);
+        $scope.foto_logado = firebaseUser.user.photoURL;
+        $scope.nome_logado = firebaseUser.user.displayName;
+        localStorage.setItem("logado" , true);
+        $scope.logado = true;
+        console.log($scope.usuario_logado);
+        var meu_profile = firebase.database().ref().child("profile/"+$scope.usuario_logado.providerData[0].uid);
+       var profile = $firebaseArray(meu_profile);
+
+              $scope.profile = profile;
+
+              $scope.profile.$loaded(function() {
+                if($scope.profile.length == 0){
+                    $scope.profile.$add({
+                      nome : firebaseUser.user.displayName,
+                      firebase_uid:firebaseUser.user.uid,
+                      fb_uid:$scope.usuario_logado.providerData[0].uid,
+                      equipe:{},
+                      manager:0,
+                      criado : new Date().getTime()
+                    });
+                }else{
+                  alert("Bem vindo de Volta !");
+                }
+                 
+              });
+
+      }).catch(function(error) {
+        console.log("Authentication failed:", error);
+      });
+
+    }
+
+	  alert('Main!');
+	});
+
+
+	app.controller('HomeController', function($scope) {
+	  alert('Routing pages with ngRoute is damn awesome!');
+	});
 
 </script>
 
