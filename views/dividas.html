@@ -1,123 +1,51 @@
 	<div class="content-container">
 
-			<h1 class="page-title">Dividas</h1>
+			<h1 class="page-title">Minhas tentivas de acordo</h1>
 			
-			<!-- Checkout process step indicator-->
-			<div class="checkout-process">
-				<div class="process-step">
-					<div class="step-num active">
-						1
-					</div>
-					<div class="step-name">
-						Adicionado
-					</div>
-				</div>
-				<div class="process-step">
-					<div class="step-num">
-						2
-					</div>
-					<div class="step-name">
-						Encontrado
-					</div>
-				</div>
-				<div class="lineconnect"></div>
-			</div>
-			<!-- End Checkout process-->
+			<!-- Order history navigation -->
+			<a href="/nova_divida"><button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="">Novo</button></a>
+			<hr>
+			<div class="order-history-nav">
+				<select class="browser-default">
 
-			<!-- Summary of total payment payment (Collapsible) -->
-			<ul class="collapsible payment-summary" data-collapsible="accordion">
-				<li>
+					<option value="">Recusadas</option>
+					<option value="" selected>Visualizadas</option>
+					<option value="">Fechadas</option>
+				</select>
+			</div>
+			<!-- End Order history navigation -->
+
+			<!-- Order history listing (collapsible) -->
+			<ul class="collapsible order-history" data-collapsible="accordion">
+				<li ng-repeat="proposta in minhas_propostas">
 					<div class="collapsible-header">
-						<span class="fa fa-caret-right"></span>
-						<div class="summary-item">
-							<span class="desc bold">Divida Total</span>
-							<span class="value bold">$ 182.90</span>
+						<span class="indicator fa fa-caret-right"></span>
+						<div class="order-status">
+							visualizada <span class="fa fa-check"></span>
+						</div>
+						<div class="order-no">
+							<span class="block bold">{{proposta.nome_empresa}} - Contrato # {{proposta.contrato}}<a href="#">55891</a></span>
+							<span class="block text-small">Adicionado em {{proposta.criado| date:'d/M/yyyy HH:mm:ss'}}</span>
 						</div>
 					</div>
 					<div class="collapsible-body">
-						<div class="summary-item">
-							<span class="desc">Contrato 1</span>
-							<span class="value">$ 172.90</span>
-						</div>
-						<div class="summary-item">
-							<span class="desc">Contrato 2</span>
-							<span class="value">$ 182.90</span>
-						</div>
-						<div class="summary-item">
-							<span class="desc">Contrato 3</span>
-							<span class="value">Expirado</span>
-						</div>
-						<div class="summary-item">
-							<span class="desc">Contrato 4</span>
-							<span class="value">Inconclusivo</span>
-						</div>
+						<ol>
+							<li>
+								
+								<div class="ctn">
+									<h3>Valor</h3>
+									<span>R$</span> {{proposta.valor}} / parcela minima {{proposta.parcela}}
+									<p><a href="#" class="track-order">Reenviar</a></p>
+								</div>
+							</li>
+							
+						</ol>
 					</div>
 				</li>
+				
+		
 			</ul>
-			<!-- END Summary of total payment payment -->
-
-			<!-- Shipping Address Section -->
-			<div class="page-block checkout-shipping-block">
-				
-				<h2 class="block-title">
-					<span>Dados da empresa</span>
-				</h2>
-
-				<div class="selli-canvas">
-
-					<p>
-						<span class="semibold">Mesbla</span>
-						<a href="#change-address" class="text-small modal-trigger">alterar (modal)</a>
-					</p>
-
-					<p>
-					Voce é cliente dessa empresa desde 2001<br>
-					Seu score é 200</p>
-					<span class="semibold block">Nome da empresa</span>
-					<textarea cols="40" rows="2" name="note"></textarea>
-
-					<!-- Modal Structure -->
-					<div id="change-address" class="modal modal-fixed-footer">
-						<div class="modal-content">
-							<h4>Change Address</h4>
-							<p>A bunch of text</p>
-						</div>
-						<div class="modal-footer">
-							<a href="#!" class="modal-action modal-close btn-flat ">Save</a>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-			<!-- END Shipping Address Section -->
-
-			<!-- Shipping Method Section -->
-			<div class="page-block checkout-shipping-block margin-bottom">
-				
-				<h2 class="block-title">
-					<span>Aceita contraproposta</span>
-				</h2>
-
-				<ol class="payment-method">
-					<li>
-						<input name="group1" type="radio" id="test1" />
-						<label for="test1">Não aceito</label>
-					</li>
-					<li>
-						<input name="group1" type="radio" id="test3"  />
-						<label for="test3">Aceito</label>
-						<span>Você será notificado para aceitar</span>
-					</li>
-					
-				</ol>
-
-			</div>
-			<!-- END Shipping Method Section -->
-
-			<div class="checkout-shipping-block">
-				<button type="button" class="btn green block">Salvar</button>
-			</div>
+			<!-- End Order history listing -->
 
 
 		</div>

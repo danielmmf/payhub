@@ -1,0 +1,77 @@
+	<div class="content-container">
+
+			<h1 class="page-title">Dividas</h1>
+			
+			<!-- Checkout process step indicator-->
+			<div class="checkout-process">
+				<div class="process-step">
+					<div class="step-num active">
+						1
+					</div>
+					<div class="step-name">
+						Adicionado
+					</div>
+				</div>
+				<div class="process-step">
+					<div class="step-num">
+						2
+					</div>
+					<div class="step-name">
+						Encontrado
+					</div>
+				</div>
+				<div class="lineconnect"></div>
+			</div>
+			<!-- End Checkout process-->
+
+			<!-- Summary of total payment payment (Collapsible) -->
+	
+
+			<!-- Shipping Address Section -->
+			<div class="page-block checkout-shipping-block">
+				
+				<h2 class="block-title">
+					<span>Dados da empresa</span>
+				</h2>
+
+				<div class="selli-canvas">
+
+					
+					<span class="semibold block">Nome da empresa</span>
+					<textarea cols="40" rows="2" name="note" ng-model="nome_empresa"></textarea>
+
+				
+				</div>
+
+			</div>
+			<!-- END Shipping Address Section -->
+
+			<!-- Shipping Method Section -->
+			<div class="page-block checkout-shipping-block margin-bottom">
+				
+				<h2 class="block-title">
+					<span>Aceita contraproposta</span>
+				</h2>
+
+				<ol class="payment-method">
+					<li>
+						<input name="group1" ng-model="proposta"  type="radio" value="0" id="test1" />
+						<label for="test1">Não aceito</label>
+					</li>
+					<li>
+						<input name="group1" type="radio" ng-model="proposta" value="1" id="test3"  />
+						<label for="test3">Aceito</label>
+						<span>Você será notificado para aceitar</span>
+					</li>
+					
+				</ol>
+
+			</div>
+			<!-- END Shipping Method Section -->
+
+			<div class="checkout-shipping-block">
+				<button type="button" class="btn green block" ng-click="adiciona()">Salvar</button>
+			</div>
+
+
+		</div>

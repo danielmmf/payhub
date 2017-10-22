@@ -338,11 +338,20 @@
 	      templateUrl: 'views/acordos.html',
 	      controller: 'AcordosController'
 	    })
-
 	    .state('dividas', {
 	      url: '/dividas',
 	      templateUrl: 'views/dividas.html',
 	      controller: 'DividasController'
+	    })
+	    .state('nova_divida', {
+	      url: '/nova_divida',
+	      templateUrl: 'views/nova_divida.html',
+	      controller: 'NovaDividaController'
+	    })
+	     .state('empresa', {
+	      url: '/empresa/:nome_empresa',
+	      templateUrl: 'views/empresa.html',
+	      controller: 'EmpresaController'
 	    })
 	    .state('contact', {
 	      url: '/contact',
@@ -602,9 +611,103 @@
 	 // alert('Routing pages with ngRoute is damn awesome!');
 	});
 
-	app.controller('DividasController', function($scope) {
+	app.controller('NovaDividaController', function($scope , $state , $firebaseArray) {
+	 // alert('Routing pages with ngRoute is damn awesome!');
+
+	 	$scope.adiciona = function(){
+
+
+	 		$scope.propostas = $firebaseArray(firebase.database().ref().child("propostas/"+$scope.nome_empresa));
+
+            var nova_proposta = {
+	            criador_uid:$scope.usuario_logado.providerData[0].uid,
+	            criador_nome:$scope.nome_logado,
+	            proposta:$scope.proposta,
+	            nome_empresa:$scope.nome_empresa,
+	            criado : new Date().getTime()
+            };
+
+            $scope.propostas.$add(nova_proposta).then(function(essa_proposta) {
+                //nova_equipe.equipe_key = essa_equipe.key;
+                console.log(essa_proposta.key);
+
+
+                $scope.minhas_propostas = $firebaseArray(firebase.database().ref().child("profile/"+$scope.usuario_logado.providerData[0].uid+"/propostas"));
+
+            var nova_proposta = {
+	            criador_uid:$scope.usuario_logado.providerData[0].uid,
+	            criador_nome:$scope.nome_logado,
+	            proposta:$scope.proposta,
+	            proposta_key : essa_proposta.key,
+	            nome_empresa:$scope.nome_empresa,
+	            criado : new Date().getTime()
+            };
+            $scope.minhas_propostas.$add(nova_proposta);
+            $state.go("dividas");
+
+            });
+
+
+
+	 	}
+	});
+
+
+	app.controller('DividasController', function($scope, $firebaseArray) {
 		//alert('Dividas');
 	 // alert('Routing pages with ngRoute is damn awesome!');
+
+                $scope.minhas_propostas = $firebaseArray(firebase.database().ref().child("profile/"+$scope.usuario_logado.providerData[0].uid+"/propostas"));
+
+	});
+
+	app.controller('AcordosController', function($scope, $firebaseArray) {
+		   $scope.minhas_propostas = $firebaseArray(firebase.database().ref().child("profile/"+$scope.usuario_logado.providerData[0].uid+"/propostas"));
+	});
+
+
+	app.controller('EmpresaController', function($scope , $stateParams, $firebaseArray) {
+    	//alert($stateParams.nome_empresa);
+		//alert('Dividas');
+	 // alert('Routing pages with ngRoute is damn awesome!');
+	 $scope.minhas_propostas = $firebaseArray(firebase.database().ref().child("propostas/"+$stateParams.nome_empresa));
+      $scope.minhas_propostas.$loaded(function() {
+      	console.log($scope.minhas_propostas);
+
+      });
+
+
+      $scope.atualizar = function(proposta){
+      	console.log(proposta);
+      	$scope.minhas_propostas.$save(proposta).then(function(essa_proposta) {
+
+
+      	 $scope.propostas_cliente = $firebaseArray(firebase.database().ref().child("profile/"+proposta.criador_uid+"/propostas"));
+
+      	 $scope.propostas_cliente.$loaded(function() {
+
+	      	for (var i = 0; i < $scope.propostas_cliente.length; i++) {
+	      		if(essa_proposta.key == $scope.propostas_cliente[i].proposta_key){
+	      			console.log($scope.propostas_cliente[i]);
+	      			console.log(essa_proposta);
+	      			$scope.propostas_cliente[i].contrato = proposta.contrato;
+	      			$scope.propostas_cliente[i].valor = proposta.valor;
+	      			$scope.propostas_cliente[i].parcela = proposta.parcela;
+	      			$scope.propostas_cliente[i].aceita = 1;
+
+
+	      			$scope.propostas_cliente.$save($scope.propostas_cliente[i]);
+
+	      		}
+	      	}
+
+	      });
+
+      	   });
+
+
+      }
+
 	});
 
 </script>

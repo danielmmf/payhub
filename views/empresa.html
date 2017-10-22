@@ -1,34 +1,8 @@
-		<!-- CONTENT CONTAINER -->
-		<div class="content-container" ng-hide=logado>	
 
-			<div class="content-article">
-				<h1 class="entry-title page">About SELLi</h1>
-					<div class="thumb-featured no-margin">
-						<img src="images/feat1.jpg">
-					</div><!-- .entry-meta -->
-					<div class="entry-content selli-canvas">
-						<input type="text" ng-model="yourName" placeholder="Enter a name here">
-				      <hr>
-				      <h1>Hello {{yourName}}!</h1>
-					</div><!-- .entry-content -->
-
-				<div class="selli-canvas entry-footer no-margin">
-					<div class="social-share">
-						<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-						<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-						<a href="#" class="gplus"><i class="fa fa-google-plus"></i></a>
-					</div><!-- .social-share -->
-				</div><!-- .entry-footer -->
-			</div><!-- .content-article -->
-
-		</div>
-
-
-
-		<div class="content-container" ng-show=logado>
+		<div class="content-container" >
 
 			<h1 class="page-title">
-			Negociações</h1>
+			Propostas</h1>
 			
 			<!-- Tracking order navigation -->
 			<div class="tracking-order-nav">
@@ -37,7 +11,7 @@
 					<span class="block semibold">R$ 12000 00</span>
 				</span>
 				<span class="nav-right">
-					<span class="block">Total disponibilizado</span>
+					<span class="block">Total recebido</span>
 					<span class="block semibold">R$ 250 00</span>
 				</span>
 			</div>
@@ -54,9 +28,9 @@
 							Enviado
 						</div>
 						<div class="std-shipping">
-							<span class="block text-small">{{proposta.nome_empresa}} #{{proposta.contrato}}</span>
-							<span class="block">Compra na loja</span>
-							<span class="block semibold">{{proposta.criado}} </span>
+							<span class="block text-small">{{proposta.criador_nome}}</span>
+							<span class="block">CPF : {{proposta.criador_uid}}</span>
+							<span class="block semibold">{{proposta.criado| date:'d/M/yyyy HH:mm:ss'}}</span>
 						</div>
 					</div>
 					<div class="collapsible-body">
@@ -88,22 +62,22 @@
 								Informaçẽes
 							</li>
 							<li>
-								<span class="time">03/02/2017 00:43:19</span>
-								Empresa aceitou a sua negociação 
+								<span class="time">Contrato</span>
+								<input type="text" placeholder="#contrato"  ng-model="proposta.contrato" ng-change="atualizar(proposta)">
 							</li>
 							<li>
-								<span class="time">03/02/2017 08:53:00</span>
-								Voce fechou o acordo
+								<span class="time">Valor</span>
+								<input type="text" name="" placeholder="valor" ng-model="proposta.valor" ng-change="atualizar(proposta)">
 							</li>
 						</ol>
 
 						<span class="block semibold">Dados do acordo :</span>
 						<ol class="package-contain">
 							<li>
-						
+								
 								<div class="ctn">
-									<h3>Valor total : {{proposta.valor}}</h3>
-									<span>Parcelas</span> {{proposta.parcela}}
+									<h3>Valor minimo</h3>
+									R$ <span>por parcela</span> <input type="text" name="" placeholder="999,99" ng-model="proposta.parcela" ng-change="atualizar(proposta)">
 								</div>
 							</li>
 						</ol>
@@ -117,4 +91,3 @@
 
 		</div>
 		<!-- END CONTENT CONTAINER -->
-
